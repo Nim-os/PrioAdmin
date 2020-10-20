@@ -8,6 +8,7 @@ namespace PrioAdmin.Models.Profiles
 	public abstract class ProfileBase
 	{
 		public string name { get; private set; }
+		public string email { get; private set; }
 		public string password { get; private set; }
 
 		public readonly uint internalID;
