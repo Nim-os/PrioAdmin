@@ -8,14 +8,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PrioAdmin.Models
 {
-	public class NewUser
+	public class User
 	{
 		[Required]
-		public string name;
+		public string email;
 
 		[Required]
 		public string password;
 
+	}
 
+	public class NewUser : User
+	{
+		[Required]
+		public string name;
 	}
 }

@@ -19,7 +19,6 @@ namespace PrioAdmin
 			void Insert(ProfileBase user);
 			void Update(ProfileBase user);
 			void Delete(uint id);
-
 		}
 	}
 
@@ -33,9 +32,12 @@ namespace PrioAdmin
 		{
 			private Dictionary<uint, ProfileBase> _userList;
 
+			private uint nextID;
+
 			public UserRepository()
 			{
 				_userList = new Dictionary<uint, ProfileBase>();
+				nextID = 0;
 			}
 
 			public IEnumerable<ProfileBase> All => _userList.Values;
@@ -47,12 +49,12 @@ namespace PrioAdmin
 
 			public bool DoesUserExist(uint id)
 			{
-				return _userList[id] != null;
+				return _userList.ContainsKey(id);
 			}
 
 			public ProfileBase Find(uint id)
 			{
-				if (!_userList.ContainsKey(id))
+				if (!DoesUserExist(id))
 					return null; // TODO Change later
 
 				return _userList[id];
@@ -60,23 +62,30 @@ namespace PrioAdmin
 
 			public void Insert(ProfileBase user)
 			{
-				if(_userList.ContainsKey(user.internalID))
+				if(!DoesUserExist(user.internalID))
 				{
-					return;
-				}
+					_userList.Add(user.internalID, user);
 
-				_userList.Add(user.internalID, user);
+					nextID += 1;
+				}
 
 			}
 
 			public uint NextProfileID()
 			{
-				throw new NotImplementedException();
+				return nextID;
 			}
 
 			public void Update(ProfileBase user)
 			{
-				throw new NotImplementedException();
+				if(DoesUserExist(user.internalID))
+				{
+					_userList[user.internalID] = user;
+				}
+				else
+				{
+					Insert(user);
+				}
 			}
 		}
 
