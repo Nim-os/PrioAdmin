@@ -4,10 +4,8 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-
 namespace PrioAdmin.ViewModels
 {
-	
 	class LoginViewModel
 	{
 		// api services
