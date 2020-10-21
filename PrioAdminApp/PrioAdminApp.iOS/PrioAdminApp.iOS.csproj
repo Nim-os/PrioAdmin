@@ -127,10 +127,4 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\PrioAdminApp\PrioAdminApp.csproj">
-      <Project>{858EFED5-4CF0-4A36-8ACF-078D4DC27F42}</Project>
-      <Name>PrioAdminApp</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
