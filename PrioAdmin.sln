@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrioAdminApp.Android", "Pri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrioAdminApp.iOS", "PrioAdminApp\PrioAdminApp.iOS\PrioAdminApp.iOS.csproj", "{9A707B9B-5D5B-4919-89C0-E3644DB5034F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrioAdminApp", "PrioAdminApp\PrioAdminApp\PrioAdminApp.csproj", "{65F247C2-6854-40ED-83E3-CB9003A11C74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrioAdminApp", "PrioAdminApp\PrioAdminApp\PrioAdminApp.csproj", "{65F247C2-6854-40ED-83E3-CB9003A11C74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

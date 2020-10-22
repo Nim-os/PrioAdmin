@@ -11,12 +11,17 @@ namespace PrioAdmin.Controllers
 	using Models;
 	using Models.Profiles;
 
+	enum UserErrorCode
+	{
+
+	}
+
 	[Route("api/[controller]")]
 	public class UserController : Controller
 	{
-		public readonly IUserRepository userRepo;
+		public readonly IProviderDatabase userRepo;
 
-		public UserController(IUserRepository userRepository)
+		public UserController(IProviderDatabase userRepository)
 		{
 			userRepo = userRepository;
 		}
@@ -28,7 +33,7 @@ namespace PrioAdmin.Controllers
 			{
 				if (id == null)
 				{
-					return BadRequest(ErrorCode.MissingUserCredentials.ToString());
+					return BadRequest(LoginErrorCode.MissingUserCredentials.ToString());
 				}
 
 				// TODO

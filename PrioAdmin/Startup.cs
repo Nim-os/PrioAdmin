@@ -28,9 +28,10 @@ namespace PrioAdmin
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
-			services.AddControllers();
 
-			services.AddSingleton<IUserRepository, UserRepository>();
+			services.AddSingleton<IProviderDatabase, ProviderRepository>();
+
+			services.AddSingleton<IPatientDatabase, PatientRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

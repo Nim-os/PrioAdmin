@@ -12,24 +12,23 @@ namespace PrioAdmin.Controllers
 	using Models.Profiles;
 	using PrioAdmin.Services;
 
-	enum ErrorCode
+	enum LoginErrorCode
 	{
 		MissingUserCredentials,
 		EmailAlreadyInUse,
+		RoleNotValid,
 		UserNotFound,
 		InvalidPassword,
 		CouldNotLoginUser,
-		CouldNotCreateUser,
-		CouldNotUpdateUser,
-		CouldNotDeleteUser
+		CouldNotCreateUser
 	}
 
 	[Route("[controller]")]
 	public class LoginController : Controller
 	{
-		private readonly IUserRepository userRepo;
+		private readonly IProviderDatabase userRepo;
 
-		public LoginController(IUserRepository repo)
+		public LoginController(IProviderDatabase repo)
 		{
 			userRepo = repo;
 		}
@@ -37,22 +36,36 @@ namespace PrioAdmin.Controllers
 		[HttpGet]
 		public IActionResult Login([FromBody] UserModel user)
 		{
+			ProviderBase profile;
+
 			try
 			{
 				if(user == null || !ModelState.IsValid)
 				{
-					return BadRequest(ErrorCode.MissingUserCredentials.ToString());
+					return BadRequest(LoginErrorCode.MissingUserCredentials.ToString());
 				}
 
-				
-				
+				IEnumerable<ProviderBase> providers = userRepo.All.Where(x => x.email.Equals(user.email));
+
+				if(!providers.Any())
+				{
+					return BadRequest(LoginErrorCode.UserNotFound.ToString());
+				}
+
+				if(!providers.First().password.Equals(user.password))
+				{
+					return BadRequest(LoginErrorCode.InvalidPassword.ToString());
+				}
+
+				profile = providers.First();
+
 			}
 			catch(Exception)
 			{
-				return BadRequest(ErrorCode.CouldNotLoginUser.ToString());
+				return BadRequest(LoginErrorCode.CouldNotLoginUser.ToString());
 			}
 
-			return Ok(); // TODO
+			return Ok(profile);
 		}
 
 		[HttpPost]
@@ -62,12 +75,44 @@ namespace PrioAdmin.Controllers
 			{
 				if (newUser == null || !ModelState.IsValid)
 				{
-					return BadRequest(ErrorCode.MissingUserCredentials.ToString());
+					return BadRequest(LoginErrorCode.MissingUserCredentials.ToString());
 				}
+
+				IEnumerable<ProviderBase> providers = userRepo.All.Where(x => x.email.Equals(newUser.email));
+
+				if(providers.Any())
+				{
+					return BadRequest(LoginErrorCode.EmailAlreadyInUse.ToString());
+				}
+
+				ProviderBase prof;
+
+				switch(newUser.role)
+				{
+					case Role.Coordo:
+						prof = new Coordinator(newUser.name, newUser.email, newUser.password, userRepo.NextProfileID());
+						break;
+					case Role.Urgence:
+						prof = new Urgence(newUser.name, newUser.email, newUser.password, userRepo.NextProfileID());
+						break;
+					case Role.AIC:
+						prof = new AIC(newUser.name, newUser.email, newUser.password, userRepo.NextProfileID());
+						break;
+					case Role.Infirmirary:
+						prof = new Infirmirary(newUser.name, newUser.email, newUser.password, userRepo.NextProfileID());
+						break;
+					case Role.Pediatre:
+						prof = new Resident(newUser.name, newUser.email, newUser.password, userRepo.NextProfileID());
+						break;
+					default:
+						return BadRequest(LoginErrorCode.RoleNotValid.ToString());
+				}
+
+				userRepo.Insert(prof);
 			}
 			catch(Exception)
 			{
-				return BadRequest(ErrorCode.CouldNotCreateUser.ToString());
+				return BadRequest(LoginErrorCode.CouldNotCreateUser.ToString());
 			}
 
 			return Ok();

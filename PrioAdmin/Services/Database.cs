@@ -10,20 +10,25 @@ namespace PrioAdmin
 
 	namespace Interfaces
 	{
-		public interface IDatabase
+		public interface IProviderDatabase
 		{
-			IEnumerable<ProfileBase> All { get; }
-
-		}
-
-		public interface IUserRepository
-		{
-			IEnumerable<ProfileBase> All { get; }
+			IEnumerable<ProviderBase> All { get; }
 			bool DoesUserExist(uint id);
 			uint NextProfileID();
-			ProfileBase Find(uint id);
-			void Insert(ProfileBase user);
-			void Update(ProfileBase user);
+			ProviderBase Find(uint id);
+			void Insert(ProviderBase user);
+			void Update(ProviderBase user);
+			void Delete(uint id);
+
+		}
+		public interface IPatientDatabase
+		{
+			IEnumerable<Patient> All { get; }
+			bool DoesUserExist(uint id);
+			uint NextProfileID();
+			Patient Find(uint id);
+			void Insert(Patient user);
+			void Update(Patient user);
 			void Delete(uint id);
 		}
 	}
@@ -32,19 +37,19 @@ namespace PrioAdmin
 	{
 		using Interfaces;
 
-		public class UserRepository : IUserRepository
+		public class ProviderRepository : IProviderDatabase
 		{
-			private Dictionary<uint, ProfileBase> _userList;
+			private Dictionary<uint, ProviderBase> _userList;
 
 			private uint nextID;
 
-			public UserRepository()
+			public ProviderRepository()
 			{
-				_userList = new Dictionary<uint, ProfileBase>();
+				_userList = new Dictionary<uint, ProviderBase>();
 				nextID = 0;
 			}
 
-			public IEnumerable<ProfileBase> All => _userList.Values;
+			public IEnumerable<ProviderBase> All => _userList.Values;
 
 			public void Delete(uint id)
 			{
@@ -56,7 +61,7 @@ namespace PrioAdmin
 				return _userList.ContainsKey(id);
 			}
 
-			public ProfileBase Find(uint id)
+			public ProviderBase Find(uint id)
 			{
 				if (!DoesUserExist(id))
 					return null; // TODO Change later
@@ -64,7 +69,68 @@ namespace PrioAdmin
 				return _userList[id];
 			}
 
-			public void Insert(ProfileBase user)
+			public void Insert(ProviderBase user)
+			{
+				if (!DoesUserExist(user.internalID))
+				{
+					_userList.Add(user.internalID, user);
+
+					nextID += 1;
+				}
+
+			}
+
+			public uint NextProfileID()
+			{
+				return nextID;
+			}
+
+			public void Update(ProviderBase user)
+			{
+				if (DoesUserExist(user.internalID))
+				{
+					_userList[user.internalID] = user;
+				}
+				else
+				{
+					Insert(user);
+				}
+			}
+		}
+
+		public class PatientRepository : IPatientDatabase
+		{
+			private Dictionary<uint, Patient> _userList;
+
+			private uint nextID;
+
+			public PatientRepository()
+			{
+				_userList = new Dictionary<uint, Patient>();
+				nextID = 0;
+			}
+
+			public IEnumerable<Patient> All => _userList.Values;
+
+			public void Delete(uint id)
+			{
+				_userList.Remove(id);
+			}
+
+			public bool DoesUserExist(uint id)
+			{
+				return _userList.ContainsKey(id);
+			}
+
+			public Patient Find(uint id)
+			{
+				if (!DoesUserExist(id))
+					return null; // TODO Change later
+
+				return _userList[id];
+			}
+
+			public void Insert(Patient user)
 			{
 				if(!DoesUserExist(user.internalID))
 				{
@@ -80,7 +146,7 @@ namespace PrioAdmin
 				return nextID;
 			}
 
-			public void Update(ProfileBase user)
+			public void Update(Patient user)
 			{
 				if(DoesUserExist(user.internalID))
 				{
