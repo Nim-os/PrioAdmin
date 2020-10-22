@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-//using Newtonsoft.Json;
+using Newtonsoft;
 using Xamarin.Forms;
 
 
@@ -21,10 +21,9 @@ namespace PrioAdminApp.Data
 		public RestService()
 		{
 #if DEBUG
-			//client = new HttpClient(DependencyService.Get<HttpClientHandler>().GetInsecureHandler());
-			Console.WriteLine("Debug mode actived mate");
+			client = new HttpClient(DependencyService.Get<IHttpClientHandlerService>().GetInsecureHandler());
 #else
-			client = new HttpClient();
+client = new HttpClient();
 #endif
 		}
 
