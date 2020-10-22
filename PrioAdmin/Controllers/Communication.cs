@@ -6,18 +6,62 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PrioAdmin.Controllers
 {
+	using Interfaces;
+	using Models;
+	using Models.Profiles;
+
+	enum CommunicationErrorCode
+	{
+		MissingPatientInformation,
+		CouldNotFindPatient,
+		CouldNotUpdatePatient
+	}
+
 	[Route("api/[controller]")]
 	public class CommunicationController : Controller
 	{
-		public CommunicationController()
-		{
+		public readonly IPatientDatabase patientRepo;
 
+		public CommunicationController(IPatientDatabase database)
+		{
+			patientRepo = database;
 		}
 
 		[HttpGet]
-		public IActionResult PleaseWork()
+		public IActionResult GetPatients()
 		{
-			return Ok();
+			return Ok(patientRepo.All);
+		}
+
+		[HttpPost]
+		public IActionResult UpdatePatient([FromBody] CommunicationModel patient)
+		{
+
+			Patient p;
+
+			try
+			{
+				if (patient == null || !ModelState.IsValid)
+				{
+					return BadRequest (CommunicationErrorCode.MissingPatientInformation.ToString());
+				}
+
+				p = patientRepo.Find (patient.patientID);
+
+				if (p == null)
+				{
+					return BadRequest (CommunicationErrorCode.CouldNotFindPatient.ToString());
+				}
+
+				p.SetStage(patient.newStage);
+
+			}
+			catch (Exception)
+			{
+				return BadRequest (CommunicationErrorCode.CouldNotUpdatePatient.ToString());
+			}
+
+			return Ok (p); // TODO
 		}
 	}
 }

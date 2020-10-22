@@ -15,7 +15,7 @@ namespace PrioAdmin
 		public static void Main(string[] args)
 		{
 
-			//CreateHostBuilder(args).Build().Run();
+			CreateHostBuilder(args).Build().Run();
 
 			var host = new WebHostBuilder()
 				.UseKestrel()
@@ -24,8 +24,6 @@ namespace PrioAdmin
 				.UseIISIntegration()
 				.UseStartup<Startup>()
 				.Build();
-
-			host.Run();
 		}
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>

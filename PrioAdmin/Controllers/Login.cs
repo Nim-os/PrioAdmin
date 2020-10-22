@@ -40,19 +40,19 @@ namespace PrioAdmin.Controllers
 
 			try
 			{
-				if(user == null || !ModelState.IsValid)
+				if (user == null || !ModelState.IsValid)
 				{
 					return BadRequest(LoginErrorCode.MissingUserCredentials.ToString());
 				}
 
 				IEnumerable<ProviderBase> providers = userRepo.All.Where(x => x.email.Equals(user.email));
 
-				if(!providers.Any())
+				if (!providers.Any())
 				{
 					return BadRequest(LoginErrorCode.UserNotFound.ToString());
 				}
 
-				if(!providers.First().password.Equals(user.password))
+				if (!providers.First().password.Equals(user.password))
 				{
 					return BadRequest(LoginErrorCode.InvalidPassword.ToString());
 				}
