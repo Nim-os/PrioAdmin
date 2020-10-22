@@ -14,6 +14,7 @@ namespace PrioAdmin.Controllers
 	{
 		MissingPatientInformation,
 		CouldNotFindPatient,
+		CouldNotCreatePatient,
 		CouldNotUpdatePatient
 	}
 
@@ -33,7 +34,33 @@ namespace PrioAdmin.Controllers
 			return Ok(patientRepo.All);
 		}
 
+
 		[HttpPost]
+		public IActionResult AddPatient([FromBody] PatientModel patient)
+		{
+			Patient p;
+
+			try
+			{
+				if (patient == null || !ModelState.IsValid)
+				{
+					return BadRequest(CommunicationErrorCode.MissingPatientInformation.ToString());
+				}
+
+				p = new Patient(patient.name, patientRepo.NextProfileID());
+
+
+			}
+			catch (Exception)
+			{
+				return BadRequest(CommunicationErrorCode.CouldNotCreatePatient.ToString());
+			}
+
+			return Ok(p);
+		}
+
+
+		[HttpPut]
 		public IActionResult UpdatePatient([FromBody] CommunicationModel patient)
 		{
 
@@ -61,7 +88,7 @@ namespace PrioAdmin.Controllers
 				return BadRequest (CommunicationErrorCode.CouldNotUpdatePatient.ToString());
 			}
 
-			return Ok (p); // TODO
+			return Ok (p);
 		}
 	}
 }

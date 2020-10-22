@@ -11,11 +11,11 @@ namespace PrioAdmin.Models
 	public class CommunicationModel
 	{
 		[Required]
-		public uint patientID;
+		public uint patientID { get; set; }
 
 		[Required]
-		public PatientStage newStage;
+		public PatientStage newStage { get; set; }
 
-		public bool seen = false;
+		public bool seen { get; set; }
 	}
 }

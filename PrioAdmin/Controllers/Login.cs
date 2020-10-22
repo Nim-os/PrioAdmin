@@ -82,8 +82,6 @@ namespace PrioAdmin.Controllers
 					return BadRequest(LoginErrorCode.MissingUserCredentials.ToString());
 				}
 
-				Console.WriteLine(newUser.email);
-
 
 				if (userRepo.All.Any())
 				{

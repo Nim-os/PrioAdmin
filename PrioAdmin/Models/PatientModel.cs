@@ -9,6 +9,6 @@ namespace PrioAdmin.Models
 	public class PatientModel
 	{
 		[Required]
-		public string name;
+		public string name { get; set; }
 	}
 }
