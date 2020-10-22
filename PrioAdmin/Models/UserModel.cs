@@ -20,14 +20,8 @@ namespace PrioAdmin.Models
 
 	}
 
-	public class NewUserModel
+	public class NewUserModel : UserModel
 	{
-		[Required]
-		public string email { get; set; }
-
-		[Required]
-		public string password { get; set; }
-
 		[Required]
 		public string name { get; set; }
 
