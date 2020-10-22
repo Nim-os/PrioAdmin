@@ -26,7 +26,7 @@ namespace PrioAdmin.Controllers
 	[Route("[controller]")]
 	public class LoginController : Controller
 	{
-		private readonly IProviderDatabase userRepo;
+		public readonly IProviderDatabase userRepo;
 
 		public LoginController(IProviderDatabase repo)
 		{
@@ -45,12 +45,15 @@ namespace PrioAdmin.Controllers
 					return BadRequest(LoginErrorCode.MissingUserCredentials.ToString());
 				}
 
+				
 				IEnumerable<ProviderBase> providers = userRepo.All.Where(x => x.email.Equals(user.email));
+
 
 				if (!providers.Any())
 				{
 					return BadRequest(LoginErrorCode.UserNotFound.ToString());
 				}
+
 
 				if (!providers.First().password.Equals(user.password))
 				{
@@ -69,8 +72,9 @@ namespace PrioAdmin.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult SignUp([FromBody] NewUser newUser)
+		public IActionResult SignUp([FromBody] NewUserModel newUser)
 		{
+			ProviderBase prof;
 			try
 			{
 				if (newUser == null || !ModelState.IsValid)
@@ -78,14 +82,21 @@ namespace PrioAdmin.Controllers
 					return BadRequest(LoginErrorCode.MissingUserCredentials.ToString());
 				}
 
-				IEnumerable<ProviderBase> providers = userRepo.All.Where(x => x.email.Equals(newUser.email));
+				Console.WriteLine(newUser.email);
 
-				if(providers.Any())
+
+				if (userRepo.All.Any())
 				{
-					return BadRequest(LoginErrorCode.EmailAlreadyInUse.ToString());
+					IEnumerable<ProviderBase> providers;
+
+					providers = userRepo.All.Where(x => x.email.Equals(newUser.email));
+
+					if (providers.Any())
+					{
+						return BadRequest(LoginErrorCode.EmailAlreadyInUse.ToString());
+					}
 				}
 
-				ProviderBase prof;
 
 				switch(newUser.role)
 				{
@@ -115,7 +126,7 @@ namespace PrioAdmin.Controllers
 				return BadRequest(LoginErrorCode.CouldNotCreateUser.ToString());
 			}
 
-			return Ok();
+			return Ok(prof);
 		}
 	}
 

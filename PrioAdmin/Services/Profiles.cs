@@ -18,7 +18,7 @@ namespace PrioAdmin.Models.Profiles
 	public abstract class ProfileBase
 	{
 		public string name { get; private set; }
-		public readonly uint internalID;
+		public uint internalID { get; }
 
 		public ProfileBase(string pName, uint id)
 		{
@@ -35,15 +35,11 @@ namespace PrioAdmin.Models.Profiles
 
 		public Role role { get; protected set; }
 
-		public List<Patient> patients { get; private set; }
-
 		public ProviderBase(string pName, string pEmail, string pPassword, uint id) : base(pName, id)
 		{
 
 			email = pEmail;
 			password = pPassword;
-
-			patients = new List<Patient>();
 		}
 	}
 
