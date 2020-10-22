@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PrioAdmin.Interfaces;
+using PrioAdmin.Services;
 
 namespace PrioAdmin
 {
@@ -27,7 +29,9 @@ namespace PrioAdmin
 		{
 			services.AddMvc();
 
+			services.AddSingleton<IProviderDatabase, ProviderRepository>();
 
+			services.AddSingleton<IPatientDatabase, PatientRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
