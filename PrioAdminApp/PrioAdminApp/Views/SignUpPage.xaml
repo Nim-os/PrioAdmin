@@ -7,6 +7,25 @@
             <Label Text="Sign up"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+			<Entry x:Name="name" Placeholder="Name" />
+			<Entry x:Name="email" Placeholder="Email" />
+			<Entry x:Name="password" Placeholder="Password" />
+			
+			<!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem}" /> -->
+			<Picker x:Name="picker"
+				Title="Select a role">
+				<Picker.ItemsSource>
+					<x:Array Type="{x:Type x:String}">
+						<x:String>Urgence</x:String>
+						<x:String>Coordo</x:String>
+						<x:String>AIC</x:String>
+						<x:String>Pediatre</x:String>
+						<x:String>Infirmirary</x:String>
+					</x:Array>
+				</Picker.ItemsSource>
+			</Picker>
+
+			<Button Text="Sign Up" Clicked="OnSignUpButtonClicked" />
+		</StackLayout>
     </ContentPage.Content>
 </ContentPage>

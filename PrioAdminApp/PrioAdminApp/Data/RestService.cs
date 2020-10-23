@@ -32,12 +32,53 @@ namespace PrioAdminApp.Data
 
 		public async Task RegisterAsync(NewUserModel newUser)
 		{
-			throw new NotImplementedException();
+
+			Uri uri = new Uri($"{restURL}login");
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(newUser);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PutAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser signed up successfully.");
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+			}
+
+			return;
 		}
 
 		public async Task LoginAsync(UserModel user)
 		{
-			throw new NotImplementedException();
+			Uri uri = new Uri($"{restURL}login");
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(user);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PostAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser logged in successfully.");
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+			}
+
+			return;
 		}
 
 		public async Task<List<PatientModel>> RefreshDataAsync()
@@ -62,18 +103,56 @@ namespace PrioAdminApp.Data
 			}
 
 			return patients;
-
-			throw new NotImplementedException();
 		}
 
 		public async Task AddPatientAsync(PatientModel patient)
 		{
-			throw new NotImplementedException();
+			Uri uri = new Uri($"{restURL}api/communication");
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(patient);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PostAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser logged in successfully.");
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+			}
+
+			return;
 		}
 
 		public async Task CommunicationAsync(CommunicationModel communication)
 		{
-			throw new NotImplementedException();
+			Uri uri = new Uri($"{restURL}api/communication");
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(communication);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PutAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser logged in successfully.");
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+			}
+
+			return;
 		}
 	}
 }

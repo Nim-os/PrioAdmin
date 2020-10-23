@@ -33,7 +33,7 @@ namespace PrioAdmin.Controllers
 			userRepo = repo;
 		}
 
-		[HttpGet]
+		[HttpPost]
 		public IActionResult Login([FromBody] UserModel user)
 		{
 			ProviderBase profile;
@@ -71,7 +71,7 @@ namespace PrioAdmin.Controllers
 			return Ok(profile);
 		}
 
-		[HttpPost]
+		[HttpPut]
 		public IActionResult SignUp([FromBody] NewUserModel newUser)
 		{
 			ProviderBase prof;

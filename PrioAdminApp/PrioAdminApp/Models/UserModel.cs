@@ -2,6 +2,14 @@
 
 namespace PrioAdminApp.Models
 {
+	public enum Role
+	{
+		Urgence,
+		Coordo,
+		AIC,
+		Pediatre,
+		Infirmirary
+	}
 
 	public class UserModel
 	{
@@ -15,7 +23,7 @@ namespace PrioAdminApp.Models
 	{
 		public string name { get; set; }
 
-		public int role { get; set; }
+		public Role role { get; set; }
 
 
 	}

@@ -12,17 +12,6 @@
 		<Entry Placeholder="Email" />
 		<Entry Placeholder="Password" IsPassword="True" />
 
-		<Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-		
 		<Button Text="Login" Padding="57,10" HorizontalOptions="Center" Clicked="OnLoginButtonClicked" />
 		<Button Text="Sign-up" Padding="50,10" HorizontalOptions="Center" Clicked="OnSignUpButtonClicked" />
 	</StackLayout>

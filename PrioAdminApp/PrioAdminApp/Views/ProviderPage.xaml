@@ -2,11 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrioAdminApp.Views.ProviderPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Provider"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+	
+	<ListView x:Name="listView" Margin="20" ItemSelected="OnPatientClicked">
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+					<StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+						<Label Text="{Binding name}" VerticalTextAlignment="Center"/>
+
+					</StackLayout>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
 </ContentPage>
