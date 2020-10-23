@@ -9,8 +9,8 @@
         </Frame>
         <Label Text="Login to your provider account" FontSize="Title" Padding="30,10,30,10"/>
 		
-		<Entry Placeholder="Email" />
-		<Entry Placeholder="Password" IsPassword="True" />
+		<Entry x:Name="loginEmail" Placeholder="Email" />
+		<Entry x:Name="loginPass" Placeholder="Password" IsPassword="True" />
 
 		<Button Text="Login" Padding="57,10" HorizontalOptions="Center" Clicked="OnLoginButtonClicked" />
 		<Button Text="Sign-up" Padding="50,10" HorizontalOptions="Center" Clicked="OnSignUpButtonClicked" />

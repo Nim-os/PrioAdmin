@@ -3,16 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrioAdminApp.Views.ProviderPage">
 	
-	<ListView x:Name="listView" Margin="20" ItemSelected="OnPatientClicked">
-		<ListView.ItemTemplate>
-			<DataTemplate>
-				<ViewCell>
-					<StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-						<Label Text="{Binding name}" VerticalTextAlignment="Center"/>
+	<ContentPage.ToolbarItems>
+		<!--<ToolbarItem Text="{Binding Path=roleName}" >
+		</ToolbarItem>-->
+		<ToolbarItem Text="+" Clicked="OnAddPatientClicked">
+			<ToolbarItem.IconImageSource>
+				<OnPlatform x:TypeArguments="ImageSource">
+					<On Platform="Android, UWP" Value="plus.png" />
+				</OnPlatform>
+			</ToolbarItem.IconImageSource>
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>
+	
+	<ContentPage.Content>
+		<ListView x:Name="listView" Margin="0" ItemSelected="OnPatientClicked">
+			<ListView.Header>
+				 <Label Text="{Binding Path=roleName}" BackgroundColor="#2196F3" 
+					   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
+					   FontSize="30" Padding="0,0,0,15" TextColor="White" FontAttributes="Bold" />
+			</ListView.Header> 
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Padding="20,10,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+							<Label Text="{Binding name}" VerticalTextAlignment="Center"/>
 
-					</StackLayout>
-				</ViewCell>
-			</DataTemplate>
-		</ListView.ItemTemplate>
-	</ListView>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
 </ContentPage>

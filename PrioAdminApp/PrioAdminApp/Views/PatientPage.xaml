@@ -4,11 +4,23 @@
              x:Class="PrioAdminApp.Views.PatientPage">
 	
 	<StackLayout>
-		<Label Text="{Binding Path=name}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+		<Frame BackgroundColor="White" Padding="10">
+			<Label Text="{Binding Path=name}"
+                HorizontalOptions="CenterAndExpand" 
+				   FontSize="20" FontAttributes="Bold"/>
 
-		<Label Text="Patient ID: " />
-		<Label Text="{Binding Path=id}" />
+		</Frame>
+		
+		<Label Text="{Binding Path=id, StringFormat='Patient ID: {0}'}" TextColor="Black"
+			   HorizontalTextAlignment="Center" Padding="10"
+			   FontSize="16" FontAttributes="Italic"/>
+		
+		<Label Text="{Binding Path=stage, StringFormat='Patient Stage: {0}'}" TextColor="Black"
+			   HorizontalTextAlignment="Center" Padding="10"
+			   FontSize="16" />
+		
+		<Button Text="Click me harder" Clicked="OnGenericButtonClicked" 
+				HorizontalOptions="CenterAndExpand"
+				Padding="16"/>
 	</StackLayout>
 </ContentPage>

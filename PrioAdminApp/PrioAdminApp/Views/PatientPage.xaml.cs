@@ -20,6 +20,8 @@ namespace PrioAdminApp.Views
 			InitializeComponent();
 
 			patient = p;
+
+			
 		}
 
 		protected async override void OnAppearing()
@@ -28,6 +30,20 @@ namespace PrioAdminApp.Views
 
 			// Correct button thing
 			
+		}
+
+		async void OnGenericButtonClicked(object sender, EventArgs e)
+		{
+
+			CommunicationModel comm = new CommunicationModel();
+
+			comm.patientID = patient.id;
+			comm.newStage = (PatientStage)(patient.stage + 1);
+
+
+
+
+			await App.patientManager.SendCommunicationAsync(comm);
 		}
 
 

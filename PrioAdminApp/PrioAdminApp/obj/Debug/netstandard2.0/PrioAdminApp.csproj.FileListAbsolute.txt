@@ -15,3 +15,4 @@ C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdmin
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\ProviderPage.xaml.g.cs
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\SignUpPage.xaml.g.cs
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\PrioAdminApp.csprojAssemblyReference.cache
+C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\AddPatientPage.xaml.g.cs

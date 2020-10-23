@@ -27,17 +27,22 @@ namespace PrioAdminApp.Views
 
 			if(name.Text == null || email.Text == null || password.Text == null || picker.SelectedIndex == -1)
 			{
-				// Something's missing
+				Console.WriteLine("Null item in signup");
 
 				return;
 			}
+			Console.WriteLine("Signup looks good");
 
 			newUser.name = name.Text;
 			newUser.email = email.Text;
 			newUser.password = password.Text;
 			newUser.role = (Role)picker.SelectedIndex;
-			
-			// Sign-up call
+
+			Console.WriteLine($"\n\n\nName: {newUser.name}\nEmail: {newUser.email}\nPassword: {newUser.password}\nRole: {newUser.role}\nBuffer Buffer\n\n\n");
+
+			await App.patientManager.RegisterUserAsync(newUser);
+
+			await Navigation.PopAsync();
 			
 		}
 		void OnPickerSelectedIndexChanged(object sender, EventArgs e)

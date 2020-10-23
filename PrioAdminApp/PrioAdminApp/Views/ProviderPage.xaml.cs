@@ -34,5 +34,10 @@ namespace PrioAdminApp.Views
 				BindingContext = e.SelectedItem as PatientModel
 			});
 		}
+
+		async void OnAddPatientClicked(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new AddPatientPage());
+		}
 	}
 }
