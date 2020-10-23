@@ -17,7 +17,7 @@ namespace PrioAdminApp.Data
 
 		public List<PatientModel> patients { get; private set; }
 
-		public const string restURL = "http://127.168.12.4:5000/";
+		public const string restURL = "http://10.0.2.2:5000/";
 
 
 
@@ -56,9 +56,11 @@ namespace PrioAdminApp.Data
 			return;
 		}
 
-		public async Task LoginAsync(UserModel user)
+		public async Task<int> LoginAsync(UserModel user)
 		{
 			Uri uri = new Uri($"{restURL}login");
+
+			int role = -1;
 
 			try
 			{
@@ -70,6 +72,7 @@ namespace PrioAdminApp.Data
 				if (msg.IsSuccessStatusCode)
 				{
 					Debug.WriteLine(@"\tUser logged in successfully.");
+					role = JsonConvert.DeserializeObject<int>(await msg.Content.ReadAsStringAsync());
 				}
 
 			}
@@ -78,7 +81,7 @@ namespace PrioAdminApp.Data
 				Debug.WriteLine($"\tERROR {ex.Message}");
 			}
 
-			return;
+			return role;
 		}
 
 		public async Task<List<PatientModel>> RefreshDataAsync()

@@ -24,22 +24,22 @@ namespace PrioAdminApp.Data
 
 		public Task RegisterUserAsync(NewUserModel newUser)
 		{
-			throw new NotImplementedException();
+			return rest.RegisterAsync(newUser);
 		}
 
-		public Task LoginUserAsync(UserModel user)
+		public Task<int> LoginUserAsync(UserModel user)
 		{
-			throw new NotImplementedException();
+			return rest.LoginAsync(user); // TODO
 		}
 
 		public Task InsertPatientAsync(PatientModel patient)
 		{
-			throw new NotImplementedException();
+			return rest.AddPatientAsync(patient);
 		}
 
 		public Task SendCommunicationAsync(CommunicationModel communication)
 		{
-			throw new NotImplementedException();
+			return rest.CommunicationAsync(communication);
 		}
 	}
 }

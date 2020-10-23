@@ -18,6 +18,7 @@ namespace PrioAdminApp.Views
 
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
+			App.patientManager.LoginUserAsync();
 			
 			await Navigation.PushAsync(new ProviderPage());
 		}
