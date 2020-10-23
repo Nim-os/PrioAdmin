@@ -23,7 +23,7 @@ namespace PrioAdminApp.Views
 		{
 			base.OnAppearing();
 
-			// Get all patients
+			listView.ItemsSource = await App.patientManager.GetPatientsAsync();
 		}
 
 

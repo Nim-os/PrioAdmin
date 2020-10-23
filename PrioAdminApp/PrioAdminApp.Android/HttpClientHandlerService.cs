@@ -21,7 +21,8 @@ namespace PrioAdminApp.Droid
             {
                 if (cert.Issuer.Equals("CN=localhost"))
                     return true;
-                return errors == System.Net.Security.SslPolicyErrors.None;
+                return true;
+                //return errors == System.Net.Security.SslPolicyErrors.None;
             };
             return handler;
         }

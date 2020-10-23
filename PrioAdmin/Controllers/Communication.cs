@@ -55,6 +55,7 @@ namespace PrioAdmin.Controllers
 
 				p = new Patient(patient.name, patientRepo.NextProfileID());
 
+				patientRepo.Insert(p);
 
 			}
 			catch (Exception)

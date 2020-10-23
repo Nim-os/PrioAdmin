@@ -50,7 +50,7 @@ namespace PrioAdminApp.Data
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+				Debug.WriteLine($"\tERROR {ex.Message}");
 			}
 
 			return;
@@ -75,7 +75,7 @@ namespace PrioAdminApp.Data
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+				Debug.WriteLine($"\tERROR {ex.Message}");
 			}
 
 			return;
@@ -99,7 +99,7 @@ namespace PrioAdminApp.Data
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+				Debug.WriteLine($"\tERROR {ex.Message}");
 			}
 
 			return patients;
@@ -124,7 +124,7 @@ namespace PrioAdminApp.Data
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+				Debug.WriteLine($"\tERROR {ex.Message}");
 			}
 
 			return;
@@ -149,7 +149,7 @@ namespace PrioAdminApp.Data
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine(@"\tERROR {0}", ex.Message);
+				Debug.WriteLine($"\tERROR {ex.Message}");
 			}
 
 			return;

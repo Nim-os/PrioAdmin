@@ -16,9 +16,9 @@ namespace PrioAdminApp.Data
 			rest = service;
 		}
 
-		public Task<List<PatientModel>> GetTasksAsync()
+		public Task<List<PatientModel>> GetPatientsAsync()
 		{
-			throw new NotImplementedException();
+			return rest.RefreshDataAsync();
 		}
 
 
