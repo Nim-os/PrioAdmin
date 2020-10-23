@@ -19,11 +19,13 @@ namespace PrioAdminApp.Views
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
 
+			await Navigation.PushAsync(new ProviderPage());
 		}
 
-		async void OnSignupButtonClicked(object sender, EventArgs e)
+		async void OnSignUpButtonClicked(object sender, EventArgs e)
 		{
 
+			await Navigation.PushAsync(new SignUpPage());
 		}
 	}
 }

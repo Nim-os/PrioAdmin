@@ -13,11 +13,11 @@ namespace PrioAdminApp
 		
 		public App()
 		{
-			patientManager = new PatientManager(new RestService());
+			//patientManager = new PatientManager(new RestService());
 			
 			InitializeComponent();
 
-			var loginPage = new NavigationPage(new LoginPage());
+			MainPage = new NavigationPage(new LoginPage());
 		}
 
 		protected override void OnStart()

@@ -24,7 +24,7 @@
         </Label>
 		
 		<Button Text="Login" Padding="57,10" HorizontalOptions="Center" Clicked="OnLoginButtonClicked" />
-		<Button Text="Sign-up" Padding="50,10" HorizontalOptions="Center" Clicked="OnSignupButtonClicked" />
+		<Button Text="Sign-up" Padding="50,10" HorizontalOptions="Center" Clicked="OnSignUpButtonClicked" />
 	</StackLayout>
 
 </ContentPage>

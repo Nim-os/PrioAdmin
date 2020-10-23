@@ -8,9 +8,10 @@ using PrioAdminApp.iOS;
 using PrioAdminApp.Data;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(HttpClientHandlerService))]
+//[assembly: Dependency(typeof(HttpClientHandlerService))]
 namespace PrioAdminApp.iOS
 {
+    /*
     public class HttpClientHandlerService : IHttpClientHandlerService
     {
         public HttpClientHandler GetInsecureHandler()
@@ -24,5 +25,5 @@ namespace PrioAdminApp.iOS
             };
             return handler;
         }
-    }
+    }*/
 }
