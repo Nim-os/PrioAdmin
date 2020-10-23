@@ -13,7 +13,7 @@ namespace PrioAdminApp
 		
 		public App()
 		{
-			//patientManager = new PatientManager(new RestService());
+			patientManager = new PatientManager(new RestService());
 			
 			InitializeComponent();
 
