@@ -4,12 +4,18 @@ namespace PrioAdminApp.Models
 {
 	public enum PatientStage
 	{
-		Default,
+		Inactive,
 		BedNeeded,
 		BedAssigned,
 		BedReady,
 		PatientReady,
 		PatientArrived
+	}
+
+	public class NewPatientModel
+	{
+		public string name { get; set; }
+
 	}
 
 	public class PatientModel

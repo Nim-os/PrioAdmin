@@ -14,19 +14,21 @@
 			</ToolbarItem.IconImageSource>
 		</ToolbarItem>
 	</ContentPage.ToolbarItems>
-	
+
 	<ContentPage.Content>
-		<ListView x:Name="listView" Margin="0" ItemSelected="OnPatientClicked">
+		<ListView x:Name="listView" ItemSelected="OnPatientClicked">
 			<ListView.Header>
-				 <Label Text="{Binding Path=roleName}" BackgroundColor="#2196F3" 
-					   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
-					   FontSize="30" Padding="0,0,0,15" TextColor="White" FontAttributes="Bold" />
+				<Frame>
+					<Label Text="{Binding Path=roleName, StringFormat='{0} Page'}"
+						HorizontalOptions="CenterAndExpand"
+					   FontSize="20" FontAttributes="Bold" />
+				</Frame>
 			</ListView.Header> 
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
 						<StackLayout Padding="20,10,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-							<Label Text="{Binding name}" VerticalTextAlignment="Center"/>
+							<Label Text="{Binding name}" VerticalTextAlignment="Center" />
 
 						</StackLayout>
 					</ViewCell>

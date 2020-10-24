@@ -14,9 +14,13 @@ namespace PrioAdminApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProviderPage : ContentPage
 	{
-		public ProviderPage()
+		Role role;
+
+		public ProviderPage(Role r)
 		{
 			InitializeComponent();
+
+			role = r;
 		}
 
 		protected async override void OnAppearing()
@@ -29,7 +33,7 @@ namespace PrioAdminApp.Views
 
 		async void OnPatientClicked(object sender, SelectedItemChangedEventArgs e)
 		{
-			await Navigation.PushAsync(new PatientPage(e.SelectedItem as PatientModel)
+			await Navigation.PushAsync(new PatientPage(e.SelectedItem as PatientModel, role)
 			{
 				BindingContext = e.SelectedItem as PatientModel
 			});

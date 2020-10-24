@@ -108,7 +108,7 @@ namespace PrioAdminApp.Data
 			return patients;
 		}
 
-		public async Task AddPatientAsync(PatientModel patient)
+		public async Task AddPatientAsync(NewPatientModel patient)
 		{
 			Uri uri = new Uri($"{restURL}api/communication");
 

@@ -14,7 +14,7 @@ namespace PrioAdminApp.Data
 
 		Task<List<PatientModel>> RefreshDataAsync();
 
-		Task AddPatientAsync(PatientModel patient);
+		Task AddPatientAsync(NewPatientModel patient);
 
 		Task CommunicationAsync(CommunicationModel communication);
 

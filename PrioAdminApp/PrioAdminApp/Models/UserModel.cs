@@ -8,7 +8,7 @@ namespace PrioAdminApp.Models
 		Coordo,
 		AIC,
 		Pediatre,
-		Infirmirary
+		Infirmiere
 	}
 
 	public class UserModel

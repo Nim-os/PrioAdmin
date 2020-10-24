@@ -4,9 +4,15 @@
              x:Class="PrioAdminApp.Views.AddPatientPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
+			<Frame>
+				<Label Text="New Patient" FontSize="20" FontAttributes="Bold"
                 HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+			</Frame>
+			
+			<Entry x:Name="patientName" Placeholder="Patient's Name" Margin="10,0"/>
+			
+			<Button Text="Add Patient" Clicked="OnAddPatientClicked" 
+					HorizontalOptions="Center" Margin="10"/>
+		</StackLayout>
     </ContentPage.Content>
 </ContentPage>

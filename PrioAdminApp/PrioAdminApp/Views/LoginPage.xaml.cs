@@ -39,7 +39,7 @@ namespace PrioAdminApp.Views
 				return;
 			}
 
-			await Navigation.PushAsync(new ProviderPage()
+			await Navigation.PushAsync(new ProviderPage((Role)ret)
 			{
 				BindingContext = new RoleModel() { role = ret, roleName = ((Role)ret).ToString()}
 

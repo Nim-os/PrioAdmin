@@ -4,7 +4,7 @@
              x:Class="PrioAdminApp.Views.PatientPage">
 	
 	<StackLayout>
-		<Frame BackgroundColor="White" Padding="10">
+		<Frame Padding="10">
 			<Label Text="{Binding Path=name}"
                 HorizontalOptions="CenterAndExpand" 
 				   FontSize="20" FontAttributes="Bold"/>
@@ -12,15 +12,15 @@
 		</Frame>
 		
 		<Label Text="{Binding Path=id, StringFormat='Patient ID: {0}'}" TextColor="Black"
-			   HorizontalTextAlignment="Center" Padding="10"
-			   FontSize="16" FontAttributes="Italic"/>
+			   HorizontalTextAlignment="Center" Padding="5"
+			   FontSize="14" FontAttributes="Italic"/>
 		
 		<Label Text="{Binding Path=stage, StringFormat='Patient Stage: {0}'}" TextColor="Black"
 			   HorizontalTextAlignment="Center" Padding="10"
 			   FontSize="16" />
 		
-		<Button Text="Click me harder" Clicked="OnGenericButtonClicked" 
+		<Button x:Name="Button" Text="Click TODO" Clicked="OnGenericButtonClicked" 
 				HorizontalOptions="CenterAndExpand"
-				Padding="16"/>
+				Padding="16" />
 	</StackLayout>
 </ContentPage>

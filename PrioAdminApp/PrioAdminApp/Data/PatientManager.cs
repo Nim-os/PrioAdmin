@@ -32,7 +32,7 @@ namespace PrioAdminApp.Data
 			return rest.LoginAsync(user); // TODO
 		}
 
-		public Task InsertPatientAsync(PatientModel patient)
+		public Task InsertPatientAsync(NewPatientModel patient)
 		{
 			return rest.AddPatientAsync(patient);
 		}

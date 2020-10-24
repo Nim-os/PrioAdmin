@@ -14,13 +14,14 @@ namespace PrioAdminApp.Views
 	public partial class PatientPage : ContentPage
 	{
 		PatientModel patient;
+		Role role;
 
-		public PatientPage(PatientModel p)
+		public PatientPage(PatientModel p, Role r)
 		{
 			InitializeComponent();
 
 			patient = p;
-
+			role = r;
 			
 		}
 
@@ -28,7 +29,21 @@ namespace PrioAdminApp.Views
 		{
 			base.OnAppearing();
 
-			// Correct button thing
+			switch(role)
+			{
+				case Role.Urgence:
+					Button.Text = "Request Bed";
+					break;
+				case Role.Coordo:
+					Button.Text = "Request Bed";
+					break;
+				case Role.Infirmiere:
+					Button.Text = "Patient Arrived";
+					break;
+				default:
+					Button.Text = "Not Implemented";
+					break;
+			}
 			
 		}
 
@@ -40,8 +55,9 @@ namespace PrioAdminApp.Views
 			comm.patientID = patient.id;
 			comm.newStage = (PatientStage)(patient.stage + 1);
 
+			Console.WriteLine($"Patient ID: {patient.id}\nNext Stage: {comm.newStage}\nBuffer");
 
-
+			Button.IsEnabled = false;
 
 			await App.patientManager.SendCommunicationAsync(comm);
 		}
