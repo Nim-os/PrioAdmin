@@ -11,6 +11,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(HttpClientHandlerService))]
 namespace PrioAdminApp.iOS
 {
+    
     public class HttpClientHandlerService : IHttpClientHandlerService
     {
         public HttpClientHandler GetInsecureHandler()

@@ -34,6 +34,12 @@ namespace PrioAdmin.Controllers
 			return Ok(patientRepo.All);
 		}
 
+		[HttpGet("{id}")]
+		public IActionResult GetPatient(uint id)
+		{
+			return Ok(patientRepo.Find(id));
+		}
+
 
 		[HttpPost]
 		public IActionResult AddPatient([FromBody] PatientModel patient)
@@ -49,6 +55,7 @@ namespace PrioAdmin.Controllers
 
 				p = new Patient(patient.name, patientRepo.NextProfileID());
 
+				patientRepo.Insert(p);
 
 			}
 			catch (Exception)

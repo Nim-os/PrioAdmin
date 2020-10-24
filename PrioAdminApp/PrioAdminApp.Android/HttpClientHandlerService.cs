@@ -11,6 +11,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(HttpClientHandlerService))]
 namespace PrioAdminApp.Droid
 {
+ 
     public class HttpClientHandlerService : IHttpClientHandlerService
     {
         public HttpClientHandler GetInsecureHandler()
@@ -20,7 +21,8 @@ namespace PrioAdminApp.Droid
             {
                 if (cert.Issuer.Equals("CN=localhost"))
                     return true;
-                return errors == System.Net.Security.SslPolicyErrors.None;
+                return true;
+                //return errors == System.Net.Security.SslPolicyErrors.None;
             };
             return handler;
         }

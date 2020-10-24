@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrioAdminApp.Views.SignUpPage">
+    <ContentPage.Content>
+        <StackLayout >
+			<Frame>
+				<Label Text="Sign up" 
+                HorizontalOptions="CenterAndExpand" 
+				   FontSize="20" FontAttributes="Bold" />
+			</Frame>
+			<Entry x:Name="name" Placeholder="Name" Margin="10,0"/>
+			<Entry x:Name="email" Placeholder="Email" Margin="10,0"/>
+			<Entry x:Name="password" Placeholder="Password" Margin="10,0"/>
+			
+			<!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem}" /> -->
+			<Picker x:Name="picker"
+				Title="Select a role" Margin="10,0">
+				<Picker.ItemsSource>
+					<x:Array Type="{x:Type x:String}">
+						<x:String>Urgence</x:String>
+						<x:String>Coordo</x:String>
+						<x:String>AIC</x:String>
+						<x:String>Pediatre</x:String>
+						<x:String>Infirmiere</x:String>
+					</x:Array>
+				</Picker.ItemsSource>
+			</Picker>
+
+			<Button Text="Sign Up" Clicked="OnSignUpButtonClicked" Margin="10,10" HorizontalOptions="CenterAndExpand"/>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

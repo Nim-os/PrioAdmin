@@ -3,7 +3,7 @@ C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdmin
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\bin\Debug\netstandard2.0\ref\PrioAdminApp.dll
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\bin\Debug\netstandard2.0\PrioAdminApp.pdb
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\App.xaml.g.cs
-C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\PrioAdminApp.AssemblyInfoInputs.cache
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\PrioAdminApp.AssemblyInfo.cs
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\PrioAdminApp.csproj.CoreCompileInputs.cache
@@ -11,4 +11,8 @@ C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdmin
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\PrioAdminApp.dll
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\ref\PrioAdminApp.dll
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\PrioAdminApp.pdb
+C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\PatientPage.xaml.g.cs
+C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\ProviderPage.xaml.g.cs
+C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\SignUpPage.xaml.g.cs
 C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\PrioAdminApp.csprojAssemblyReference.cache
+C:\Users\Christophe Simon\Desktop\Coding\GitHub\PrioAdmin\PrioAdminApp\PrioAdminApp\obj\Debug\netstandard2.0\Views\AddPatientPage.xaml.g.cs

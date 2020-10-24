@@ -10,11 +10,11 @@ namespace PrioAdminApp.Data
 	{
 		Task RegisterAsync(NewUserModel newUser);
 
-		Task LoginAsync(UserModel user);
+		Task<int> LoginAsync(UserModel user);
 
 		Task<List<PatientModel>> RefreshDataAsync();
 
-		Task AddPatientAsync(PatientModel patient);
+		Task AddPatientAsync(NewPatientModel patient);
 
 		Task CommunicationAsync(CommunicationModel communication);
 

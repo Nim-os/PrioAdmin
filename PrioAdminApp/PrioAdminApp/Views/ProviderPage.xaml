@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrioAdminApp.Views.ProviderPage">
+	
+	<ContentPage.ToolbarItems>
+		<!--<ToolbarItem Text="{Binding Path=roleName}" >
+		</ToolbarItem>-->
+		<ToolbarItem Text="+" Clicked="OnAddPatientClicked">
+			<ToolbarItem.IconImageSource>
+				<OnPlatform x:TypeArguments="ImageSource">
+					<On Platform="Android, UWP" Value="plus.png" />
+				</OnPlatform>
+			</ToolbarItem.IconImageSource>
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>
+
+	<ContentPage.Content>
+		<ListView x:Name="listView" ItemSelected="OnPatientClicked">
+			<ListView.Header>
+				<Frame>
+					<Label Text="{Binding Path=roleName, StringFormat='{0} Page'}"
+						HorizontalOptions="CenterAndExpand"
+					   FontSize="20" FontAttributes="Bold" />
+				</Frame>
+			</ListView.Header> 
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Padding="20,10,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+							<Label Text="{Binding name}" VerticalTextAlignment="Center" />
+
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

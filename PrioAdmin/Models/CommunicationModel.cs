@@ -11,6 +11,9 @@ namespace PrioAdmin.Models
 	public class CommunicationModel
 	{
 		[Required]
+		public string name { get; set; }
+
+		[Required]
 		public uint patientID { get; set; }
 
 		[Required]

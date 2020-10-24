@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 
@@ -17,43 +17,145 @@ namespace PrioAdminApp.Data
 
 		public List<PatientModel> patients { get; private set; }
 
+		public const string restURL = "http://10.0.2.2:5000/";
+
+
 
 		public RestService()
 		{
 #if DEBUG
 			client = new HttpClient(DependencyService.Get<IHttpClientHandlerService>().GetInsecureHandler());
 #else
-client = new HttpClient();
+			client = new HttpClient();
 #endif
 		}
 
-		public Task RegisterAsync(NewUserModel newUser)
+		public async Task RegisterAsync(NewUserModel newUser)
 		{
-			throw new NotImplementedException();
+
+			Uri uri = new Uri($"{restURL}login");
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(newUser);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PutAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser signed up successfully.");
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"\tERROR {ex.Message}");
+			}
+
+			return;
 		}
 
-		public Task LoginAsync(UserModel user)
+		public async Task<int> LoginAsync(UserModel user)
 		{
-			throw new NotImplementedException();
+			Uri uri = new Uri($"{restURL}login");
+
+			int role = -1;
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(user);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PostAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser logged in successfully.");
+					role = JsonConvert.DeserializeObject<int>(await msg.Content.ReadAsStringAsync());
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"\tERROR {ex.Message}");
+			}
+
+			return role;
 		}
 
-		public Task<List<PatientModel>> RefreshDataAsync()
+		public async Task<List<PatientModel>> RefreshDataAsync()
 		{
 			patients = new List<PatientModel>();
 
-			//Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+			Uri uri = new Uri($"{restURL}api/communication");
 
-			throw new NotImplementedException();
+			try
+			{
+				HttpResponseMessage response = await client.GetAsync(uri);
+
+				if (response.IsSuccessStatusCode)
+				{
+					string content = await response.Content.ReadAsStringAsync();
+					patients = JsonConvert.DeserializeObject<List<PatientModel>>(content);
+				}
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"\tERROR {ex.Message}");
+			}
+
+			return patients;
 		}
 
-		public Task AddPatientAsync(PatientModel patient)
+		public async Task AddPatientAsync(NewPatientModel patient)
 		{
-			throw new NotImplementedException();
+			Uri uri = new Uri($"{restURL}api/communication");
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(patient);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PostAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser logged in successfully.");
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"\tERROR {ex.Message}");
+			}
+
+			return;
 		}
 
-		public Task CommunicationAsync(CommunicationModel communication)
+		public async Task CommunicationAsync(CommunicationModel communication)
 		{
-			throw new NotImplementedException();
+			Uri uri = new Uri($"{restURL}api/communication");
+
+			try
+			{
+				string json = JsonConvert.SerializeObject(communication);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage msg = await client.PutAsync(uri, content);
+
+				if (msg.IsSuccessStatusCode)
+				{
+					Debug.WriteLine(@"\tUser logged in successfully.");
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"\tERROR {ex.Message}");
+			}
+
+			return;
 		}
 	}
 }

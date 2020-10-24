@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:56879",
-      "sslPort": 44331
+        "applicationUrl": "http://192.168.12.4:56879",
+        "sslPort": 44331
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
     },
     "PrioAdmin": {
         "commandName": "Project",
-        "applicationUrl": "https://192.168.12.4:5001;http://192.168.12.4:5000",
+        "applicationUrl": "https://localhost:5001;http://localhost:5000",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
         }

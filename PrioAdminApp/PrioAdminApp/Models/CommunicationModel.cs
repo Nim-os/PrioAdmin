@@ -7,7 +7,7 @@ namespace PrioAdminApp.Models
 	{
 		public uint patientID { get; set; }
 
-		public int newStage { get; set; }
+		public PatientStage newStage { get; set; }
 
 		public bool seen { get; set; }
 	}
